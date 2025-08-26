@@ -7,6 +7,8 @@ import DlibLandmarks
 import UIKit
 
 public class FaceRecognitionDlib: FaceRecognition {
+
+    public var defaultThreshold: Float = 0.91
     
     public typealias Version = V16
     public typealias TemplateData = [Float]
@@ -38,15 +40,16 @@ public class FaceRecognitionDlib: FaceRecognition {
     
     public func compareFaceRecognitionTemplates(_ faceRecognitionTemplates: [FaceTemplateDlib], to template: FaceTemplateDlib) async throws -> [Float] {
         let n = vDSP_Length(template.data.count)
-        var q2: Float = 0; vDSP_svesq(template.data, 1, &q2, n)
-        
+        var q2: Float = 0
+        vDSP_svesq(template.data, 1, &q2, n)
         return faceRecognitionTemplates.map { x in
             var dot: Float = 0
             vDSP_dotpr(template.data, 1, x.data, 1, &dot, n)
             var x2: Float = 0
             vDSP_svesq(x.data, 1, &x2, n)
-            let d2 = max(0, q2 + x2 - 2*dot)
-            return 1 - sqrt(d2)
+            let d2 = max(0 as Float, q2 + x2 - 2 * dot)
+            let s = 1 - 0.25 * d2
+            return min(max(s, 0), 1)
         }
     }
 }

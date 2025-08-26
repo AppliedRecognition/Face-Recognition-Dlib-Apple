@@ -13,8 +13,8 @@ let package = Package(
             targets: ["FaceRecognitionDlib"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/AppliedRecognition/Ver-ID-Common-Types-Apple.git", .upToNextMajor(from: "2.2.0")),
-        .package(url: "https://github.com/AppliedRecognition/Face-Detection-RetinaFace-Apple", .upToNextMajor(from: "1.0.3"))
+        .package(url: "https://github.com/AppliedRecognition/Ver-ID-Common-Types-Apple.git", .upToNextMajor(from: "3.0.0")),
+        .package(url: "https://github.com/AppliedRecognition/Face-Detection-RetinaFace-Apple", .upToNextMajor(from: "1.0.4"))
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
