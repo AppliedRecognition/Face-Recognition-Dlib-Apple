@@ -57,7 +57,7 @@ final class FaceRecognitionDlibTests: XCTestCase {
     }
     
     func testCompareFaces() async throws {
-        let threshold: Float = 0.5
+        let threshold: Float = self.recognition.defaultThreshold
         let subjectTemplates = try await self.subjectFaceTemplates()
         for (subject1, templates1) in subjectTemplates {
             for template1 in templates1 {
