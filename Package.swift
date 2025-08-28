@@ -33,9 +33,11 @@ let package = Package(
             ],
             cxxSettings: [
                 .headerSearchPath("../../Vendor/dlib-src"),  // or dlib-min
-                .unsafeFlags(["-std=c++17","-ffunction-sections","-fdata-sections"]),
+//                .unsafeFlags(["-std=c++17","-ffunction-sections","-fdata-sections"]),
             ],
-            linkerSettings: [.unsafeFlags(["-Wl,-dead_strip"]), .linkedLibrary("c++")]
+            linkerSettings: [
+                .linkedLibrary("c++")
+            ]
         ),
         .target(
             name: "FaceRecognitionDlib",
@@ -55,5 +57,6 @@ let package = Package(
             resources: [
                 .process("Resources")
             ]),
-    ]
+    ],
+    cxxLanguageStandard: .cxx17
 )
