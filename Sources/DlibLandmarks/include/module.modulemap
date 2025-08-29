@@ -1,0 +1,6 @@
+module DlibLandmarks {
+    requires objc
+    header "DlibLandmarks.h"
+    header "DlibLandmarkLocations.h"
+    export *
+}

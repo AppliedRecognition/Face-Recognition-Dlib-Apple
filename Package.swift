@@ -32,8 +32,7 @@ let package = Package(
                 .define("DLIB_USE_LAPACK", to: "0"),
             ],
             cxxSettings: [
-                .headerSearchPath("../../Vendor/dlib-src"),  // or dlib-min
-//                .unsafeFlags(["-std=c++17","-ffunction-sections","-fdata-sections"]),
+                .headerSearchPath("../../Vendor/dlib-src"),
             ],
             linkerSettings: [
                 .linkedLibrary("c++")
